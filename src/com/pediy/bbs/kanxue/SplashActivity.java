@@ -16,7 +16,7 @@ public class SplashActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		final View view = View.inflate(this, R.layout.splash, null);
 		setContentView(view);
-
+		NightModeManager.init(this);
 		PackageInfo pinfo;
 		try {
 			pinfo = getPackageManager().getPackageInfo(this.getPackageName(),

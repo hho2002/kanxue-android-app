@@ -1,6 +1,8 @@
 package com.pediy.bbs.kanxue;
 
+import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -14,25 +16,25 @@ import com.pediy.bbs.kanxue.net.Api;
 
 public class MainActivity extends TabActivity {
 	private long m_exitTime = 0;
-	private String[] m_tabTitle = new String[] { "新贴", "主页", "安全资讯", "设置" };
+	private String[] m_tabTitle = new String[] { "新贴", "主页", "安全资讯", "设置","夜间模式" };
 
 	private Class<?>[] m_tabIntent = new Class<?>[] { ForumDisplayPage.class,
-			ForumHomePage.class, ForumDisplayPage.class, SettingPage.class };
+			ForumHomePage.class, ForumDisplayPage.class, SettingPage.class ,ForumHomePage.class};
 
 	private int[] m_tabIcon = new int[] { R.drawable.collections_view_as_list,
 			R.drawable.collections_view_as_grid, R.drawable.coffee,
-			R.drawable.action_settings };
+			R.drawable.action_settings,R.drawable.btn_night_mode };
 
 	private Bundle[] m_data = new Bundle[] {
 			createBundle(Api.NEW_FORUM_ID, "新贴", true), null,
-			createBundle(Api.SECURITY_FORUM_ID, "安全资讯", true), null };
+			createBundle(Api.SECURITY_FORUM_ID, "安全资讯", true), null ,null};
 
+	private TabHost tabHost;  //Tviker add
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.main);
-
-		TabHost tabHost = getTabHost();
+		tabHost = getTabHost();
 		for (int i = 0; i < this.m_tabTitle.length; i++) {
 			String title = this.m_tabTitle[i];
 			Intent intent = new Intent(this, m_tabIntent[i]);
@@ -46,9 +48,13 @@ public class MainActivity extends TabActivity {
 					.setContent(intent);
 			tabHost.addTab(spec);
 		}
+		
 		// 每次进入检测更新
 		App app = (App) this.getApplication();
 		app.checkUpdate(this);
+		
+		tabHost.setOnTabChangedListener(new AnimatedTabHostListener(tabHost,this,this));
+		
 	}
 
 	// 按两下返回键退出，在tabActivity中不好用
@@ -78,7 +84,7 @@ public class MainActivity extends TabActivity {
 		}
 		return super.dispatchKeyEvent(event);
 	}
-
+	
 	private Bundle createBundle(int id, String title, boolean bHideBackBtn) {
 		Bundle data = new Bundle();
 		data.putInt("id", id);

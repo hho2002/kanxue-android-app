@@ -332,7 +332,6 @@ public class App extends Application {
 
 	public interface onCheckUpdate {
 		void networkComplete();
-
 		void noUpdate();
 	}
 }
