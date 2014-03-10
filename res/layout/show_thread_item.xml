@@ -71,7 +71,7 @@
 	        android:scaleType="fitXY"
 	        android:src="@drawable/hsegmentation" />
 	
-	    <TextView
+	    <com.pediy.bbs.kanxue.CustomTextView
 	        android:id="@+id/showthreadMsg"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"

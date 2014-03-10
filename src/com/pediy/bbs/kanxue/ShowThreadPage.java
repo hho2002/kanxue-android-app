@@ -11,6 +11,7 @@ import org.apache.http.cookie.Cookie;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.pediy.bbs.kanxue.CustomTextView.LocalLinkMovementMethod;
 import com.pediy.bbs.kanxue.net.HttpClientUtil;
 import com.pediy.bbs.kanxue.net.HttpClientUtil.NetClientCallback;
 import com.pediy.bbs.kanxue.net.Api;
@@ -28,6 +29,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Html;
 import android.text.Html.ImageGetter;
+import android.text.Spannable;
 import android.text.format.Time;
 import android.text.Spanned;
 import android.util.DisplayMetrics;
@@ -350,14 +353,15 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 			return;
 		}
 		
-		final TextView msg = (TextView)v.findViewById(R.id.showthreadMsg);
+		final CustomTextView msg = (CustomTextView)v.findViewById(R.id.showthreadMsg);
 		final int postId = Integer.parseInt(item.get("postid").toString());
 		NetClientCallback ncc = new NetClientCallback() {
 			@Override
 			public void execute(int status,
 					String response, List<Cookie> cookies) {
 				if (status == HttpClientUtil.NET_SUCCESS) {
-					final Spanned spanned = Html.fromHtml(response, m_imgGetter, null);
+					response = CustomTextView.addAToString(response);
+					final Spannable spanned = (Spannable)Html.fromHtml(response, m_imgGetter, null);
 					item.put("isExpanded", 1);
 					item.put("expandSpanned", spanned);
 					m_handler.post(new Runnable(){
@@ -365,6 +369,8 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 						@Override
 						public void run() {
 							msg.setText(spanned);
+							msg.setMovementMethod(LocalLinkMovementMethod.getInstance());
+							msg.setFocusable(false);
 							itemFooter.setLoadFinish();
 							itemFooter.setExpanded();
 						}
@@ -386,13 +392,13 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 		
 		if (item.containsKey("isExpanded") && item.getInteger("isExpanded") == 1) {
 			item.put("isExpanded", 0);
-			msg.setText((Spanned)item.get("thumbnailSpanned"));
+			msg.setText((Spannable)item.get("thumbnailSpanned"));
 			itemFooter.setCollapsed();
 			m_listView.setSelection(position);
 		}else {
 			if (item.containsKey("expandSpanned")) {
 				item.put("isExpanded", 1);
-				msg.setText((Spanned)item.get("expandSpanned"));
+				msg.setText((Spannable)item.get("expandSpanned"));
 				itemFooter.setExpanded();
 			}else {
 				itemFooter.setLoading();
@@ -460,7 +466,7 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 			TextView floorNum = (TextView)convertView.findViewById(R.id.showThreadFloorNum);
 			floorNum.setText((position + 1) + "#");
 			TextView posttime = (TextView)convertView.findViewById(R.id.showthreadPosttime);
-			final TextView msg = (TextView)convertView.findViewById(R.id.showthreadMsg);
+			final CustomTextView msg = (CustomTextView)convertView.findViewById(R.id.showthreadMsg);
 			ImageViewWithCache img = (ImageViewWithCache)convertView.findViewById(R.id.showthreadHeadImg);
 			ThreadItemFooter itemFooter = (ThreadItemFooter)convertView.findViewById(R.id.showthreadLoadTip);
 			
@@ -502,13 +508,17 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 
 				@Override
 				public void run() {
-					final Spanned spanned = Html.fromHtml(item.get("message").toString(), m_imgGetter, null);
+					String str = item.get("message").toString();
+					str = CustomTextView.addAToString(str);
+					final Spannable spanned = (Spannable)Html.fromHtml(str, m_imgGetter, null);
 					item.put("thumbnailSpanned", spanned);
 					m_handler.post(new Runnable(){
 
 						@Override
 						public void run() {
 							msg.setText(spanned);
+							msg.setMovementMethod(LocalLinkMovementMethod.getInstance());
+							msg.setFocusable(false);
 						}
 						
 					});
@@ -521,11 +531,11 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 			itemFooter.setVisibility((item.getInteger("thumbnail") == 1)?View.VISIBLE:View.GONE);
 			if (item.containsKey("isExpanded") && item.getInteger("isExpanded") == 1) {
 				//onItemClick中扩展文章，缓存格式化后的对象
-				msg.setText((Spanned)item.get("expandSpanned"));
+				msg.setText((Spannable)item.get("expandSpanned"));
 				itemFooter.setExpanded();
 			}else {
 				if (item.containsKey("thumbnailSpanned")) {
-					msg.setText((Spanned)item.get("thumbnailSpanned"));
+					msg.setText((Spannable)item.get("thumbnailSpanned"));
 				} else {
 					new Thread(runFormatMessage).start();
 				}
@@ -553,6 +563,14 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 					try {
 						URL url = new URL(Api.getInstance().getAttachmentImgUrl(attachmentId));
 						imgWithCache.setImageUrl(url, Api.getInstance().getCookieStorage().getCookies());
+						imgWithCache.setTag(url);
+						imgWithCache.setOnClickListener(new OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								 CustomTextView.ThumbnailAttachmentsClick(v.getTag().toString(), v);
+							}
+						});
 					} catch (MalformedURLException e) {
 						// TODO 自动生成的 catch 块
 						e.printStackTrace();
@@ -571,6 +589,15 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 				for (int i = 0; i < arr.size(); i++) {
 					TextView filename = new TextView(ShowThreadPage.this);
 					filename.setLayoutParams(lp);
+					filename.setTextColor(Color.BLUE);
+					filename.setText(arr.getJSONObject(i).getString("filename"));
+					filename.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							Toast.makeText(v.getContext(), "暂不支持附件下载", Toast.LENGTH_SHORT).show();
+						}
+					});
 					filename.setText(arr.getJSONObject(i).getString("filename"));
 					attachmentList.addView(filename);
 				}
