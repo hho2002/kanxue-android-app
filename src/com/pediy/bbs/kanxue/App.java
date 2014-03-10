@@ -156,7 +156,7 @@ public class App extends Application {
 				}
 
 				final JSONObject obj = JSON.parseObject(response);
-				if (obj.getInteger("version") == m_versionCode) {
+				if (obj.getInteger("version") <= m_versionCode) {
 					if (callback != null) {
 						callback.noUpdate();
 					}

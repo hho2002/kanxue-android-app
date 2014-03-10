@@ -47,8 +47,8 @@ public class MainActivity extends TabActivity {
 			tabHost.addTab(spec);
 		}
 		// 每次进入检测更新
-		App app = (App) this.getApplication();
-		app.checkUpdate(this);
+		//App app = (App) this.getApplication();
+		//app.checkUpdate(this);
 	}
 
 	// 按两下返回键退出，在tabActivity中不好用
