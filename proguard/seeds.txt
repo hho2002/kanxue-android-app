@@ -9,6 +9,10 @@ com.pediy.bbs.kanxue.AboutPage: AboutPage()
 com.pediy.bbs.kanxue.AboutPage: void onBackBtnClick(android.view.View)
 com.pediy.bbs.kanxue.App
 com.pediy.bbs.kanxue.App: App()
+com.pediy.bbs.kanxue.CustomTextView
+com.pediy.bbs.kanxue.CustomTextView: CustomTextView(android.content.Context)
+com.pediy.bbs.kanxue.CustomTextView: CustomTextView(android.content.Context,android.util.AttributeSet)
+com.pediy.bbs.kanxue.CustomTextView: CustomTextView(android.content.Context,android.util.AttributeSet,int)
 com.pediy.bbs.kanxue.FeedbackPage
 com.pediy.bbs.kanxue.FeedbackPage: FeedbackPage()
 com.pediy.bbs.kanxue.FeedbackPage: void onBackBtnClick(android.view.View)
@@ -23,6 +27,8 @@ com.pediy.bbs.kanxue.ForumHomePage
 com.pediy.bbs.kanxue.ForumHomePage: ForumHomePage()
 com.pediy.bbs.kanxue.ForumHomePage: void onRetryBtnClick(android.view.View)
 com.pediy.bbs.kanxue.ForumHomePage: void onPageTitleClick(android.view.View)
+com.pediy.bbs.kanxue.ImageActivity
+com.pediy.bbs.kanxue.ImageActivity: ImageActivity()
 com.pediy.bbs.kanxue.LoginPage
 com.pediy.bbs.kanxue.LoginPage: LoginPage()
 com.pediy.bbs.kanxue.LoginPage: void onBackBtnClick(android.view.View)
@@ -34,17 +40,22 @@ com.pediy.bbs.kanxue.NewThreadPage: NewThreadPage()
 com.pediy.bbs.kanxue.NewThreadPage: void onBackBtnClick(android.view.View)
 com.pediy.bbs.kanxue.NewThreadPage: void onSubmitBtnClick(android.view.View)
 com.pediy.bbs.kanxue.R$array: int topic_list
+com.pediy.bbs.kanxue.R$color: int black
+com.pediy.bbs.kanxue.R$color: int canvas
+com.pediy.bbs.kanxue.R$color: int deepgray
 com.pediy.bbs.kanxue.R$color: int forum_display_item_title_color
 com.pediy.bbs.kanxue.R$color: int gray
 com.pediy.bbs.kanxue.R$color: int item_header_color
 com.pediy.bbs.kanxue.R$color: int item_pressed
 com.pediy.bbs.kanxue.R$color: int quick_reply_btn_pressed
+com.pediy.bbs.kanxue.R$color: int red
 com.pediy.bbs.kanxue.R$color: int tab_color_bg
 com.pediy.bbs.kanxue.R$color: int title_header_color
 com.pediy.bbs.kanxue.R$color: int title_header_color_dark
 com.pediy.bbs.kanxue.R$color: int title_header_color_light
 com.pediy.bbs.kanxue.R$color: int transparent
 com.pediy.bbs.kanxue.R$color: int white
+com.pediy.bbs.kanxue.R$dimen: int user_info_title_marginleft
 com.pediy.bbs.kanxue.R$drawable: int action_settings
 com.pediy.bbs.kanxue.R$drawable: int attament_bg
 com.pediy.bbs.kanxue.R$drawable: int btn_default_disabled_focused_holo_light
@@ -53,6 +64,7 @@ com.pediy.bbs.kanxue.R$drawable: int btn_default_focused_holo_light
 com.pediy.bbs.kanxue.R$drawable: int btn_default_holo_light
 com.pediy.bbs.kanxue.R$drawable: int btn_default_normal_holo_light
 com.pediy.bbs.kanxue.R$drawable: int btn_default_pressed_holo_light
+com.pediy.bbs.kanxue.R$drawable: int btn_night_mode
 com.pediy.bbs.kanxue.R$drawable: int coffee
 com.pediy.bbs.kanxue.R$drawable: int collections_view_as_grid
 com.pediy.bbs.kanxue.R$drawable: int collections_view_as_list
@@ -61,6 +73,7 @@ com.pediy.bbs.kanxue.R$drawable: int edit
 com.pediy.bbs.kanxue.R$drawable: int edit_text_holo_light
 com.pediy.bbs.kanxue.R$drawable: int forum_item
 com.pediy.bbs.kanxue.R$drawable: int forum_new
+com.pediy.bbs.kanxue.R$drawable: int headpreview_bg
 com.pediy.bbs.kanxue.R$drawable: int hsegmentation
 com.pediy.bbs.kanxue.R$drawable: int item_bg
 com.pediy.bbs.kanxue.R$drawable: int item_bg_pressed
@@ -77,9 +90,11 @@ com.pediy.bbs.kanxue.R$drawable: int navigation_expand
 com.pediy.bbs.kanxue.R$drawable: int navigation_next_item
 com.pediy.bbs.kanxue.R$drawable: int navigation_previous_item
 com.pediy.bbs.kanxue.R$drawable: int navigation_refresh
+com.pediy.bbs.kanxue.R$drawable: int night_background
 com.pediy.bbs.kanxue.R$drawable: int normal_action_btn
 com.pediy.bbs.kanxue.R$drawable: int normal_item
 com.pediy.bbs.kanxue.R$drawable: int quick_reply_btn
+com.pediy.bbs.kanxue.R$drawable: int repeat_bg
 com.pediy.bbs.kanxue.R$drawable: int segmentation
 com.pediy.bbs.kanxue.R$drawable: int social_add_person_dark
 com.pediy.bbs.kanxue.R$drawable: int social_send_now
@@ -98,6 +113,11 @@ com.pediy.bbs.kanxue.R$drawable: int xlistview_arrow
 com.pediy.bbs.kanxue.R$id: int LinearLayout1
 com.pediy.bbs.kanxue.R$id: int LinearLayout2
 com.pediy.bbs.kanxue.R$id: int RelativeLayout1
+com.pediy.bbs.kanxue.R$id: int aboutPageVerText
+com.pediy.bbs.kanxue.R$id: int auto_brightness
+com.pediy.bbs.kanxue.R$id: int brightness_bar
+com.pediy.bbs.kanxue.R$id: int display_page
+com.pediy.bbs.kanxue.R$id: int div_main
 com.pediy.bbs.kanxue.R$id: int feedbackBackBtn
 com.pediy.bbs.kanxue.R$id: int feedbackEmail
 com.pediy.bbs.kanxue.R$id: int feedbackMessage
@@ -127,6 +147,7 @@ com.pediy.bbs.kanxue.R$id: int imageView3
 com.pediy.bbs.kanxue.R$id: int imageView4
 com.pediy.bbs.kanxue.R$id: int imageView5
 com.pediy.bbs.kanxue.R$id: int imageView6
+com.pediy.bbs.kanxue.R$id: int linearLayout1
 com.pediy.bbs.kanxue.R$id: int loginBackBtn
 com.pediy.bbs.kanxue.R$id: int loginPageLoginBtn
 com.pediy.bbs.kanxue.R$id: int loginPagePasswd
@@ -137,7 +158,29 @@ com.pediy.bbs.kanxue.R$id: int newThreadMessage
 com.pediy.bbs.kanxue.R$id: int newThreadSubject
 com.pediy.bbs.kanxue.R$id: int newThreadTopic
 com.pediy.bbs.kanxue.R$id: int newThreadTopicSelect
+com.pediy.bbs.kanxue.R$id: int pdGoodness
+com.pediy.bbs.kanxue.R$id: int pdMainInfo
+com.pediy.bbs.kanxue.R$id: int pdMainInfoTitle
+com.pediy.bbs.kanxue.R$id: int pdMoneny
+com.pediy.bbs.kanxue.R$id: int pdName
+com.pediy.bbs.kanxue.R$id: int pdPosts
+com.pediy.bbs.kanxue.R$id: int pdStatistics
+com.pediy.bbs.kanxue.R$id: int pdUserTitle
+com.pediy.bbs.kanxue.R$id: int peGoodness
+com.pediy.bbs.kanxue.R$id: int peGoodnessConent
+com.pediy.bbs.kanxue.R$id: int peID
+com.pediy.bbs.kanxue.R$id: int peIDConent
+com.pediy.bbs.kanxue.R$id: int peMainInfo
+com.pediy.bbs.kanxue.R$id: int peMoneny
+com.pediy.bbs.kanxue.R$id: int peMoneyConent
+com.pediy.bbs.kanxue.R$id: int peNameConent
+com.pediy.bbs.kanxue.R$id: int pePosts
+com.pediy.bbs.kanxue.R$id: int pePostsConent
+com.pediy.bbs.kanxue.R$id: int peStatistics
+com.pediy.bbs.kanxue.R$id: int peUserTitle
+com.pediy.bbs.kanxue.R$id: int peUserTitleConent
 com.pediy.bbs.kanxue.R$id: int postUserName
+com.pediy.bbs.kanxue.R$id: int progressBar3
 com.pediy.bbs.kanxue.R$id: int refreshBtn
 com.pediy.bbs.kanxue.R$id: int replyCnt
 com.pediy.bbs.kanxue.R$id: int replyLabel
@@ -163,9 +206,9 @@ com.pediy.bbs.kanxue.R$id: int showthreadLoadTip
 com.pediy.bbs.kanxue.R$id: int showthreadMsg
 com.pediy.bbs.kanxue.R$id: int showthreadPosttime
 com.pediy.bbs.kanxue.R$id: int showthreadUsername
+com.pediy.bbs.kanxue.R$id: int splashVerText
 com.pediy.bbs.kanxue.R$id: int tabIcon
 com.pediy.bbs.kanxue.R$id: int textView1
-com.pediy.bbs.kanxue.R$id: int textView2
 com.pediy.bbs.kanxue.R$id: int textView3
 com.pediy.bbs.kanxue.R$id: int textView4
 com.pediy.bbs.kanxue.R$id: int textView5
@@ -189,6 +232,7 @@ com.pediy.bbs.kanxue.R$id: int xlistview_header_text
 com.pediy.bbs.kanxue.R$id: int xlistview_header_time
 com.pediy.bbs.kanxue.R$id: int xlistview_header_time_label
 com.pediy.bbs.kanxue.R$layout: int about_page
+com.pediy.bbs.kanxue.R$layout: int brightness_view
 com.pediy.bbs.kanxue.R$layout: int feedback_page
 com.pediy.bbs.kanxue.R$layout: int forum_display_item
 com.pediy.bbs.kanxue.R$layout: int forum_display_page
@@ -196,6 +240,7 @@ com.pediy.bbs.kanxue.R$layout: int forum_home_item
 com.pediy.bbs.kanxue.R$layout: int forum_home_item_header
 com.pediy.bbs.kanxue.R$layout: int forum_home_page
 com.pediy.bbs.kanxue.R$layout: int forum_tab
+com.pediy.bbs.kanxue.R$layout: int imageshow
 com.pediy.bbs.kanxue.R$layout: int login_page
 com.pediy.bbs.kanxue.R$layout: int main
 com.pediy.bbs.kanxue.R$layout: int new_thread_page
@@ -204,12 +249,16 @@ com.pediy.bbs.kanxue.R$layout: int setting_page
 com.pediy.bbs.kanxue.R$layout: int show_thread_item
 com.pediy.bbs.kanxue.R$layout: int show_thread_page
 com.pediy.bbs.kanxue.R$layout: int show_thread_title_header
+com.pediy.bbs.kanxue.R$layout: int show_user_info
 com.pediy.bbs.kanxue.R$layout: int splash
 com.pediy.bbs.kanxue.R$layout: int thread_item_footer
 com.pediy.bbs.kanxue.R$layout: int xlistview_footer
 com.pediy.bbs.kanxue.R$layout: int xlistview_header
+com.pediy.bbs.kanxue.R$string: int about_message
 com.pediy.bbs.kanxue.R$string: int ageing_time
 com.pediy.bbs.kanxue.R$string: int app_name
+com.pediy.bbs.kanxue.R$string: int automatic_brightness
+com.pediy.bbs.kanxue.R$string: int brightness
 com.pediy.bbs.kanxue.R$string: int cache_path
 com.pediy.bbs.kanxue.R$string: int data_error
 com.pediy.bbs.kanxue.R$string: int forum_display_null
@@ -235,8 +284,15 @@ com.pediy.bbs.kanxue.R$string: int xlistview_header_hint_ready
 com.pediy.bbs.kanxue.R$string: int xlistview_header_last_time
 com.pediy.bbs.kanxue.R$style: int NormalPageTheme
 com.pediy.bbs.kanxue.R$style: int SplashTheme
+com.pediy.bbs.kanxue.R$style: int user_info_about
+com.pediy.bbs.kanxue.R$style: int user_info_content
+com.pediy.bbs.kanxue.R$style: int user_info_item
+com.pediy.bbs.kanxue.R$style: int user_info_me
+com.pediy.bbs.kanxue.R$style: int user_info_photo_item
+com.pediy.bbs.kanxue.R$style: int user_info_text
 com.pediy.bbs.kanxue.SettingPage
 com.pediy.bbs.kanxue.SettingPage: SettingPage()
+com.pediy.bbs.kanxue.SettingPage: void onShowMyInfo(android.view.View)
 com.pediy.bbs.kanxue.SettingPage: void onLoginItemClick(android.view.View)
 com.pediy.bbs.kanxue.SettingPage: void onCheckUpdateItemClick(android.view.View)
 com.pediy.bbs.kanxue.SettingPage: void onFeedbackItemClick(android.view.View)
@@ -249,6 +305,9 @@ com.pediy.bbs.kanxue.ShowThreadPage: void onReplyBtnClick(android.view.View)
 com.pediy.bbs.kanxue.ShowThreadPage: void onRefreshBtnClick(android.view.View)
 com.pediy.bbs.kanxue.SplashActivity
 com.pediy.bbs.kanxue.SplashActivity: SplashActivity()
+com.pediy.bbs.kanxue.UserInfoPage
+com.pediy.bbs.kanxue.UserInfoPage: UserInfoPage()
+com.pediy.bbs.kanxue.UserInfoPage: void onBackBtnClick(android.view.View)
 com.pediy.bbs.kanxue.widget.AmazingListView
 com.pediy.bbs.kanxue.widget.AmazingListView: void setPinnedHeaderView(android.view.View)
 com.pediy.bbs.kanxue.widget.AmazingListView: AmazingListView(android.content.Context)
@@ -259,6 +318,9 @@ com.pediy.bbs.kanxue.widget.AmazingListView: android.view.View getLoadingView()
 com.pediy.bbs.kanxue.widget.AmazingListView: void setAdapter(android.widget.ListAdapter)
 com.pediy.bbs.kanxue.widget.AmazingListView: com.pediy.bbs.kanxue.widget.AmazingAdapter getAdapter()
 com.pediy.bbs.kanxue.widget.AmazingListView: android.widget.ListAdapter getAdapter()
+com.pediy.bbs.kanxue.widget.DragImageView
+com.pediy.bbs.kanxue.widget.DragImageView: DragImageView(android.content.Context)
+com.pediy.bbs.kanxue.widget.DragImageView: DragImageView(android.content.Context,android.util.AttributeSet)
 com.pediy.bbs.kanxue.widget.ImageViewWithCache
 com.pediy.bbs.kanxue.widget.ImageViewWithCache: ImageViewWithCache(android.content.Context)
 com.pediy.bbs.kanxue.widget.ImageViewWithCache: ImageViewWithCache(android.content.Context,android.util.AttributeSet)

@@ -35,6 +35,7 @@ com.alibaba.fastjson.JSON -> com.a.a.a:
     java.lang.Object parse(java.lang.String,int) -> a
     com.alibaba.fastjson.JSONObject parseObject(java.lang.String) -> b
     int handleResovleTask(com.alibaba.fastjson.parser.DefaultJSONParser,java.lang.Object) -> a
+    com.alibaba.fastjson.JSONArray parseArray(java.lang.String) -> c
     java.lang.String toJSONString(java.lang.Object) -> a
     java.lang.String toJSONString(java.lang.Object,com.alibaba.fastjson.serializer.SerializerFeature[]) -> a
     java.lang.String toString() -> toString
@@ -87,10 +88,10 @@ com.alibaba.fastjson.JSONObject -> com.a.a.e:
     boolean containsKey(java.lang.Object) -> containsKey
     boolean containsValue(java.lang.Object) -> containsValue
     java.lang.Object get(java.lang.Object) -> get
-    com.alibaba.fastjson.JSONArray getJSONArray(java.lang.String) -> c
-    java.lang.Integer getInteger(java.lang.String) -> d
-    java.lang.Long getLong(java.lang.String) -> e
-    java.lang.String getString(java.lang.String) -> f
+    com.alibaba.fastjson.JSONArray getJSONArray(java.lang.String) -> d
+    java.lang.Integer getInteger(java.lang.String) -> e
+    java.lang.Long getLong(java.lang.String) -> f
+    java.lang.String getString(java.lang.String) -> g
     java.lang.Object put(java.lang.String,java.lang.Object) -> a
     void putAll(java.util.Map) -> putAll
     void clear() -> clear
@@ -906,6 +907,50 @@ com.alibaba.fastjson.util.TypeUtils -> com.a.a.d.g:
 com.pediy.bbs.kanxue.AboutPage -> com.pediy.bbs.kanxue.AboutPage:
     void onCreate(android.os.Bundle) -> onCreate
     void onBackBtnClick(android.view.View) -> onBackBtnClick
+com.pediy.bbs.kanxue.AnimatedTabHostListener -> com.pediy.bbs.kanxue.a:
+    android.widget.TabHost tabHost -> a
+    android.view.View preview -> b
+    android.view.View curView -> c
+    int curTabIndex -> d
+    int preTabIndex -> e
+    android.content.Context mContext -> f
+    com.pediy.bbs.kanxue.MainActivity mainActivity -> g
+    com.pediy.bbs.kanxue.NightModeManager nightmodemanager -> h
+    java.lang.String[] m_tabTitle -> i
+    int mOldBrightness -> j
+    int mCurrentBrightness -> k
+    int mOldAutomatic -> l
+    boolean mAutomaticAvailable -> m
+    void onTabChanged(java.lang.String) -> onTabChanged
+    void showBrightnessSettingDialog() -> a
+    android.view.animation.Animation setProperties(android.view.animation.Animation) -> a
+    android.view.animation.Animation inFromRightAnimation() -> b
+    android.view.animation.Animation inFromLeftAnimation() -> c
+    android.view.animation.Animation outToRightAnimation() -> d
+    android.view.animation.Animation outToLeftAnimation() -> e
+    void access$0(com.pediy.bbs.kanxue.AnimatedTabHostListener,boolean) -> a
+    com.pediy.bbs.kanxue.NightModeManager access$1(com.pediy.bbs.kanxue.AnimatedTabHostListener) -> a
+    void access$2(com.pediy.bbs.kanxue.AnimatedTabHostListener,int) -> a
+    com.pediy.bbs.kanxue.MainActivity access$3(com.pediy.bbs.kanxue.AnimatedTabHostListener) -> b
+    int access$4(com.pediy.bbs.kanxue.AnimatedTabHostListener) -> c
+    boolean access$5(com.pediy.bbs.kanxue.AnimatedTabHostListener) -> d
+    int access$6(com.pediy.bbs.kanxue.AnimatedTabHostListener) -> e
+    int access$7(com.pediy.bbs.kanxue.AnimatedTabHostListener) -> f
+com.pediy.bbs.kanxue.AnimatedTabHostListener$1 -> com.pediy.bbs.kanxue.b:
+    com.pediy.bbs.kanxue.AnimatedTabHostListener this$0 -> a
+    android.widget.SeekBar val$brightSeekBar -> b
+    void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged
+com.pediy.bbs.kanxue.AnimatedTabHostListener$2 -> com.pediy.bbs.kanxue.c:
+    com.pediy.bbs.kanxue.AnimatedTabHostListener this$0 -> a
+    void onStopTrackingTouch(android.widget.SeekBar) -> onStopTrackingTouch
+    void onStartTrackingTouch(android.widget.SeekBar) -> onStartTrackingTouch
+    void onProgressChanged(android.widget.SeekBar,int,boolean) -> onProgressChanged
+com.pediy.bbs.kanxue.AnimatedTabHostListener$3 -> com.pediy.bbs.kanxue.d:
+    com.pediy.bbs.kanxue.AnimatedTabHostListener this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.pediy.bbs.kanxue.AnimatedTabHostListener$4 -> com.pediy.bbs.kanxue.e:
+    com.pediy.bbs.kanxue.AnimatedTabHostListener this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
 com.pediy.bbs.kanxue.App -> com.pediy.bbs.kanxue.App:
     java.lang.String LOG_FILE_NAME -> a
     int m_versionCode -> b
@@ -918,9 +963,8 @@ com.pediy.bbs.kanxue.App -> com.pediy.bbs.kanxue.App:
     android.os.Handler getNetworkHandler() -> a
     void installApk(java.lang.String) -> a
     void enableRecordLog() -> b
-    void checkUpdate(android.content.Context) -> a
     void checkUpdate(android.content.Context,com.pediy.bbs.kanxue.App$onCheckUpdate) -> a
-    android.app.ProgressDialog createUpdateDialog(android.content.Context) -> b
+    android.app.ProgressDialog createUpdateDialog(android.content.Context) -> a
     java.lang.String versionCodeToName(int) -> a
     java.lang.String converToSuitableSize(int) -> b
     android.app.ProgressDialog access$0(com.pediy.bbs.kanxue.App) -> a
@@ -935,42 +979,53 @@ com.pediy.bbs.kanxue.App -> com.pediy.bbs.kanxue.App:
     void access$9(com.pediy.bbs.kanxue.App,java.lang.String) -> a
     boolean access$10(com.pediy.bbs.kanxue.App) -> f
     void access$11(com.pediy.bbs.kanxue.App,boolean) -> a
-com.pediy.bbs.kanxue.App$1 -> com.pediy.bbs.kanxue.a:
+com.pediy.bbs.kanxue.App$1 -> com.pediy.bbs.kanxue.f:
     com.pediy.bbs.kanxue.App this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.App$2 -> com.pediy.bbs.kanxue.b:
+com.pediy.bbs.kanxue.App$2 -> com.pediy.bbs.kanxue.g:
     com.pediy.bbs.kanxue.App this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.App$3 -> com.pediy.bbs.kanxue.c:
+com.pediy.bbs.kanxue.App$3 -> com.pediy.bbs.kanxue.h:
     com.pediy.bbs.kanxue.App this$0 -> a
     com.pediy.bbs.kanxue.App$onCheckUpdate val$callback -> b
     android.content.Context val$context -> c
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.App access$0(com.pediy.bbs.kanxue.App$3) -> a
-com.pediy.bbs.kanxue.App$3$1 -> com.pediy.bbs.kanxue.d:
+com.pediy.bbs.kanxue.App$3$1 -> com.pediy.bbs.kanxue.i:
     com.pediy.bbs.kanxue.App$3 this$1 -> a
     android.content.Context val$context -> b
     com.alibaba.fastjson.JSONObject val$obj -> c
     void run() -> run
     com.pediy.bbs.kanxue.App$3 access$0(com.pediy.bbs.kanxue.App$3$1) -> a
-com.pediy.bbs.kanxue.App$3$1$1 -> com.pediy.bbs.kanxue.e:
+com.pediy.bbs.kanxue.App$3$1$1 -> com.pediy.bbs.kanxue.j:
     com.pediy.bbs.kanxue.App$3$1 this$2 -> a
     android.content.Context val$context -> b
     java.lang.String val$versionName -> c
     com.alibaba.fastjson.JSONObject val$obj -> d
     void onClick(android.content.DialogInterface,int) -> onClick
     com.pediy.bbs.kanxue.App$3$1 access$0(com.pediy.bbs.kanxue.App$3$1$1) -> a
-com.pediy.bbs.kanxue.App$3$1$1$1 -> com.pediy.bbs.kanxue.f:
+com.pediy.bbs.kanxue.App$3$1$1$1 -> com.pediy.bbs.kanxue.k:
     com.pediy.bbs.kanxue.App$3$1$1 this$3 -> a
     java.lang.String val$versionName -> b
     com.alibaba.fastjson.JSONObject val$obj -> c
     void run() -> run
-com.pediy.bbs.kanxue.App$4 -> com.pediy.bbs.kanxue.g:
+com.pediy.bbs.kanxue.App$4 -> com.pediy.bbs.kanxue.l:
     com.pediy.bbs.kanxue.App this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.pediy.bbs.kanxue.App$onCheckUpdate -> com.pediy.bbs.kanxue.h:
+com.pediy.bbs.kanxue.App$onCheckUpdate -> com.pediy.bbs.kanxue.m:
     void networkComplete() -> a
     void noUpdate() -> b
+com.pediy.bbs.kanxue.CustomTextView -> com.pediy.bbs.kanxue.CustomTextView:
+    boolean dontConsumeNonUrlClicks -> a
+    boolean linkHit -> b
+    java.lang.String addAToString(java.lang.String) -> a
+    void ThumbnailAttachmentsClick(java.lang.String,android.view.View) -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    void LinkClick(java.lang.String,android.widget.TextView) -> a
+com.pediy.bbs.kanxue.CustomTextView$LocalLinkMovementMethod -> com.pediy.bbs.kanxue.n:
+    com.pediy.bbs.kanxue.CustomTextView$LocalLinkMovementMethod sInstance -> a
+    com.pediy.bbs.kanxue.CustomTextView$LocalLinkMovementMethod getInstance() -> a
+    boolean onTouchEvent(android.widget.TextView,android.text.Spannable,android.view.MotionEvent) -> onTouchEvent
 com.pediy.bbs.kanxue.FeedbackPage -> com.pediy.bbs.kanxue.FeedbackPage:
     android.widget.EditText m_name -> a
     android.widget.EditText m_email -> b
@@ -980,15 +1035,15 @@ com.pediy.bbs.kanxue.FeedbackPage -> com.pediy.bbs.kanxue.FeedbackPage:
     void onBackBtnClick(android.view.View) -> onBackBtnClick
     void onSendBtnClick(android.view.View) -> onSendBtnClick
     android.os.Handler access$0(com.pediy.bbs.kanxue.FeedbackPage) -> a
-com.pediy.bbs.kanxue.FeedbackPage$1 -> com.pediy.bbs.kanxue.i:
+com.pediy.bbs.kanxue.FeedbackPage$1 -> com.pediy.bbs.kanxue.o:
     com.pediy.bbs.kanxue.FeedbackPage this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.FeedbackPage$2 -> com.pediy.bbs.kanxue.j:
+com.pediy.bbs.kanxue.FeedbackPage$2 -> com.pediy.bbs.kanxue.p:
     com.pediy.bbs.kanxue.FeedbackPage this$0 -> a
     android.app.ProgressDialog val$pd -> b
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.FeedbackPage access$0(com.pediy.bbs.kanxue.FeedbackPage$2) -> a
-com.pediy.bbs.kanxue.FeedbackPage$2$1 -> com.pediy.bbs.kanxue.k:
+com.pediy.bbs.kanxue.FeedbackPage$2$1 -> com.pediy.bbs.kanxue.q:
     com.pediy.bbs.kanxue.FeedbackPage$2 this$1 -> a
     android.app.ProgressDialog val$pd -> b
     int val$status -> c
@@ -1035,27 +1090,27 @@ com.pediy.bbs.kanxue.ForumDisplayPage -> com.pediy.bbs.kanxue.ForumDisplayPage:
     android.os.Handler access$11(com.pediy.bbs.kanxue.ForumDisplayPage) -> i
     void access$12(com.pediy.bbs.kanxue.ForumDisplayPage,int) -> b
     void access$13(com.pediy.bbs.kanxue.ForumDisplayPage,int) -> c
-com.pediy.bbs.kanxue.ForumDisplayPage$1 -> com.pediy.bbs.kanxue.l:
+com.pediy.bbs.kanxue.ForumDisplayPage$1 -> com.pediy.bbs.kanxue.r:
     com.pediy.bbs.kanxue.ForumDisplayPage this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.ForumDisplayPage$2 -> com.pediy.bbs.kanxue.m:
+com.pediy.bbs.kanxue.ForumDisplayPage$2 -> com.pediy.bbs.kanxue.s:
     com.pediy.bbs.kanxue.ForumDisplayPage this$0 -> a
     int val$page -> b
     void execute(int,java.lang.String,java.util.List) -> a
-com.pediy.bbs.kanxue.ForumDisplayPage$3 -> com.pediy.bbs.kanxue.n:
+com.pediy.bbs.kanxue.ForumDisplayPage$3 -> com.pediy.bbs.kanxue.t:
     com.pediy.bbs.kanxue.ForumDisplayPage this$0 -> a
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.ForumDisplayPage access$0(com.pediy.bbs.kanxue.ForumDisplayPage$3) -> a
-com.pediy.bbs.kanxue.ForumDisplayPage$3$1 -> com.pediy.bbs.kanxue.o:
+com.pediy.bbs.kanxue.ForumDisplayPage$3$1 -> com.pediy.bbs.kanxue.u:
     com.pediy.bbs.kanxue.ForumDisplayPage$3 this$1 -> a
     void run() -> run
-com.pediy.bbs.kanxue.ForumDisplayPage$ForumDisplayAdapter -> com.pediy.bbs.kanxue.p:
+com.pediy.bbs.kanxue.ForumDisplayPage$ForumDisplayAdapter -> com.pediy.bbs.kanxue.v:
     com.pediy.bbs.kanxue.ForumDisplayPage this$0 -> a
     int getCount() -> getCount
     java.lang.Object getItem(int) -> getItem
     long getItemId(int) -> getItemId
     android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-com.pediy.bbs.kanxue.ForumDisplayPage$Recv -> com.pediy.bbs.kanxue.q:
+com.pediy.bbs.kanxue.ForumDisplayPage$Recv -> com.pediy.bbs.kanxue.w:
     com.pediy.bbs.kanxue.ForumDisplayPage this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.pediy.bbs.kanxue.ForumHomePage -> com.pediy.bbs.kanxue.ForumHomePage:
@@ -1086,13 +1141,13 @@ com.pediy.bbs.kanxue.ForumHomePage -> com.pediy.bbs.kanxue.ForumHomePage:
     void access$6(com.pediy.bbs.kanxue.ForumHomePage,java.lang.String) -> a
     android.content.SharedPreferences access$7(com.pediy.bbs.kanxue.ForumHomePage) -> g
     android.os.Handler access$8(com.pediy.bbs.kanxue.ForumHomePage) -> h
-com.pediy.bbs.kanxue.ForumHomePage$1 -> com.pediy.bbs.kanxue.r:
+com.pediy.bbs.kanxue.ForumHomePage$1 -> com.pediy.bbs.kanxue.x:
     com.pediy.bbs.kanxue.ForumHomePage this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.ForumHomePage$2 -> com.pediy.bbs.kanxue.s:
+com.pediy.bbs.kanxue.ForumHomePage$2 -> com.pediy.bbs.kanxue.y:
     com.pediy.bbs.kanxue.ForumHomePage this$0 -> a
     void execute(int,java.lang.String,java.util.List) -> a
-com.pediy.bbs.kanxue.ForumHomePage$ForumHomeAdapter -> com.pediy.bbs.kanxue.t:
+com.pediy.bbs.kanxue.ForumHomePage$ForumHomeAdapter -> com.pediy.bbs.kanxue.z:
     com.pediy.bbs.kanxue.ForumHomePage this$0 -> a
     int getCount() -> getCount
     java.lang.Object getItem(int) -> getItem
@@ -1104,9 +1159,23 @@ com.pediy.bbs.kanxue.ForumHomePage$ForumHomeAdapter -> com.pediy.bbs.kanxue.t:
     void onNextPageRequested(int) -> a
     void bindSectionHeader(android.view.View,int,boolean) -> a
     void configurePinnedHeader(android.view.View,int,int) -> a
-com.pediy.bbs.kanxue.ForumHomePage$Recv -> com.pediy.bbs.kanxue.u:
+com.pediy.bbs.kanxue.ForumHomePage$Recv -> com.pediy.bbs.kanxue.aa:
     com.pediy.bbs.kanxue.ForumHomePage this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.pediy.bbs.kanxue.ImageActivity -> com.pediy.bbs.kanxue.ImageActivity:
+    com.pediy.bbs.kanxue.widget.DragImageView dragImageView -> a
+    android.widget.ProgressBar progressBar -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    android.graphics.Bitmap downloadBitmap(java.lang.String) -> a
+    android.graphics.Bitmap access$0(com.pediy.bbs.kanxue.ImageActivity,java.lang.String) -> a
+    android.widget.ProgressBar access$1(com.pediy.bbs.kanxue.ImageActivity) -> a
+com.pediy.bbs.kanxue.ImageActivity$BitmapDownloaderTask -> com.pediy.bbs.kanxue.ab:
+    java.lang.ref.WeakReference imageViewReference -> b
+    com.pediy.bbs.kanxue.ImageActivity this$0 -> a
+    android.graphics.Bitmap doInBackground(java.lang.String[]) -> a
+    void onPostExecute(android.graphics.Bitmap) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.pediy.bbs.kanxue.LoginPage -> com.pediy.bbs.kanxue.LoginPage:
     android.widget.TextView m_userName -> a
     android.widget.TextView m_passwd -> b
@@ -1117,14 +1186,14 @@ com.pediy.bbs.kanxue.LoginPage -> com.pediy.bbs.kanxue.LoginPage:
     void onLoginBtnClick(android.view.View) -> onLoginBtnClick
     android.app.ProgressDialog access$0(com.pediy.bbs.kanxue.LoginPage) -> a
     android.os.Handler access$1(com.pediy.bbs.kanxue.LoginPage) -> b
-com.pediy.bbs.kanxue.LoginPage$1 -> com.pediy.bbs.kanxue.v:
+com.pediy.bbs.kanxue.LoginPage$1 -> com.pediy.bbs.kanxue.ac:
     com.pediy.bbs.kanxue.LoginPage this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.LoginPage$2 -> com.pediy.bbs.kanxue.w:
+com.pediy.bbs.kanxue.LoginPage$2 -> com.pediy.bbs.kanxue.ad:
     com.pediy.bbs.kanxue.LoginPage this$0 -> a
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.LoginPage access$0(com.pediy.bbs.kanxue.LoginPage$2) -> a
-com.pediy.bbs.kanxue.LoginPage$2$1 -> com.pediy.bbs.kanxue.x:
+com.pediy.bbs.kanxue.LoginPage$2$1 -> com.pediy.bbs.kanxue.ae:
     com.pediy.bbs.kanxue.LoginPage$2 this$1 -> a
     int val$ret -> b
     com.alibaba.fastjson.JSONObject val$retObj -> c
@@ -1135,6 +1204,7 @@ com.pediy.bbs.kanxue.MainActivity -> com.pediy.bbs.kanxue.MainActivity:
     java.lang.Class[] m_tabIntent -> c
     int[] m_tabIcon -> d
     android.os.Bundle[] m_data -> e
+    android.widget.TabHost tabHost -> f
     void onCreate(android.os.Bundle) -> onCreate
     boolean dispatchKeyEvent(android.view.KeyEvent) -> dispatchKeyEvent
     android.os.Bundle createBundle(int,java.lang.String,boolean) -> a
@@ -1152,24 +1222,36 @@ com.pediy.bbs.kanxue.NewThreadPage -> com.pediy.bbs.kanxue.NewThreadPage:
     void access$1(com.pediy.bbs.kanxue.NewThreadPage,int) -> a
     android.widget.EditText access$2(com.pediy.bbs.kanxue.NewThreadPage) -> b
     android.os.Handler access$3(com.pediy.bbs.kanxue.NewThreadPage) -> c
-com.pediy.bbs.kanxue.NewThreadPage$1 -> com.pediy.bbs.kanxue.y:
+com.pediy.bbs.kanxue.NewThreadPage$1 -> com.pediy.bbs.kanxue.af:
     com.pediy.bbs.kanxue.NewThreadPage this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.NewThreadPage$2 -> com.pediy.bbs.kanxue.z:
+com.pediy.bbs.kanxue.NewThreadPage$2 -> com.pediy.bbs.kanxue.ag:
     com.pediy.bbs.kanxue.NewThreadPage this$0 -> a
     java.lang.String[] val$topics -> b
     void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
     void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
-com.pediy.bbs.kanxue.NewThreadPage$3 -> com.pediy.bbs.kanxue.aa:
+com.pediy.bbs.kanxue.NewThreadPage$3 -> com.pediy.bbs.kanxue.ah:
     com.pediy.bbs.kanxue.NewThreadPage this$0 -> a
     java.lang.String val$subjectText -> b
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.NewThreadPage access$0(com.pediy.bbs.kanxue.NewThreadPage$3) -> a
-com.pediy.bbs.kanxue.NewThreadPage$3$1 -> com.pediy.bbs.kanxue.ab:
+com.pediy.bbs.kanxue.NewThreadPage$3$1 -> com.pediy.bbs.kanxue.ai:
     com.pediy.bbs.kanxue.NewThreadPage$3 this$1 -> a
     java.lang.String val$response -> b
     java.lang.String val$subjectText -> c
     void run() -> run
+com.pediy.bbs.kanxue.NightModeManager -> com.pediy.bbs.kanxue.aj:
+    android.content.Context mContext -> a
+    com.pediy.bbs.kanxue.NightModeManager brightnessManager -> b
+    com.pediy.bbs.kanxue.NightModeManager init(android.content.Context) -> a
+    void setBrightnessValue(android.app.Activity,int) -> a
+    void saveBrightnessValue(int) -> a
+    int getBrightnessValue() -> a
+    void startAutoBrightness() -> b
+    void stopAutoBrightness() -> c
+    void setBrightnessMode(int) -> b
+    int getBrightnessMode() -> d
+    boolean isAutoBrightness() -> e
 com.pediy.bbs.kanxue.SettingPage -> com.pediy.bbs.kanxue.SettingPage:
     android.widget.TextView m_version -> a
     com.pediy.bbs.kanxue.widget.ImageViewWithCache m_loginUserHeadImg -> b
@@ -1181,6 +1263,7 @@ com.pediy.bbs.kanxue.SettingPage -> com.pediy.bbs.kanxue.SettingPage:
     void onDestroy() -> onDestroy
     void onLoginState() -> a
     void onLogoutState() -> b
+    void onShowMyInfo(android.view.View) -> onShowMyInfo
     void onLoginItemClick(android.view.View) -> onLoginItemClick
     void onActivityResult(int,int,android.content.Intent) -> onActivityResult
     void onCheckUpdateItemClick(android.view.View) -> onCheckUpdateItemClick
@@ -1189,34 +1272,34 @@ com.pediy.bbs.kanxue.SettingPage -> com.pediy.bbs.kanxue.SettingPage:
     void access$0(com.pediy.bbs.kanxue.SettingPage) -> a
     android.os.Handler access$1(com.pediy.bbs.kanxue.SettingPage) -> b
     void access$2(com.pediy.bbs.kanxue.SettingPage) -> c
-com.pediy.bbs.kanxue.SettingPage$1 -> com.pediy.bbs.kanxue.ac:
+com.pediy.bbs.kanxue.SettingPage$1 -> com.pediy.bbs.kanxue.ak:
     com.pediy.bbs.kanxue.SettingPage this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
     com.pediy.bbs.kanxue.SettingPage access$0(com.pediy.bbs.kanxue.SettingPage$1) -> a
-com.pediy.bbs.kanxue.SettingPage$1$1 -> com.pediy.bbs.kanxue.ad:
+com.pediy.bbs.kanxue.SettingPage$1$1 -> com.pediy.bbs.kanxue.al:
     com.pediy.bbs.kanxue.SettingPage$1 this$1 -> a
     android.app.ProgressDialog val$pd -> b
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.SettingPage$1 access$0(com.pediy.bbs.kanxue.SettingPage$1$1) -> a
-com.pediy.bbs.kanxue.SettingPage$1$1$1 -> com.pediy.bbs.kanxue.ae:
+com.pediy.bbs.kanxue.SettingPage$1$1$1 -> com.pediy.bbs.kanxue.am:
     com.pediy.bbs.kanxue.SettingPage$1$1 this$2 -> a
     android.app.ProgressDialog val$pd -> b
     void run() -> run
-com.pediy.bbs.kanxue.SettingPage$2 -> com.pediy.bbs.kanxue.af:
+com.pediy.bbs.kanxue.SettingPage$2 -> com.pediy.bbs.kanxue.an:
     com.pediy.bbs.kanxue.SettingPage this$0 -> a
     android.os.Handler val$handler -> b
     android.app.ProgressDialog val$pd -> c
     void networkComplete() -> a
     void noUpdate() -> b
     com.pediy.bbs.kanxue.SettingPage access$0(com.pediy.bbs.kanxue.SettingPage$2) -> a
-com.pediy.bbs.kanxue.SettingPage$2$1 -> com.pediy.bbs.kanxue.ag:
+com.pediy.bbs.kanxue.SettingPage$2$1 -> com.pediy.bbs.kanxue.ao:
     com.pediy.bbs.kanxue.SettingPage$2 this$1 -> a
     android.app.ProgressDialog val$pd -> b
     void run() -> run
-com.pediy.bbs.kanxue.SettingPage$2$2 -> com.pediy.bbs.kanxue.ah:
+com.pediy.bbs.kanxue.SettingPage$2$2 -> com.pediy.bbs.kanxue.ap:
     com.pediy.bbs.kanxue.SettingPage$2 this$1 -> a
     void run() -> run
-com.pediy.bbs.kanxue.SettingPage$Recv -> com.pediy.bbs.kanxue.ai:
+com.pediy.bbs.kanxue.SettingPage$Recv -> com.pediy.bbs.kanxue.aq:
     com.pediy.bbs.kanxue.SettingPage this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.pediy.bbs.kanxue.ShowThreadPage -> com.pediy.bbs.kanxue.ShowThreadPage:
@@ -1260,73 +1343,134 @@ com.pediy.bbs.kanxue.ShowThreadPage -> com.pediy.bbs.kanxue.ShowThreadPage:
     void access$13(com.pediy.bbs.kanxue.ShowThreadPage,int) -> c
     void access$14(com.pediy.bbs.kanxue.ShowThreadPage,long) -> a
     void access$15(com.pediy.bbs.kanxue.ShowThreadPage,com.alibaba.fastjson.JSONArray) -> a
-com.pediy.bbs.kanxue.ShowThreadPage$1 -> com.pediy.bbs.kanxue.aj:
+com.pediy.bbs.kanxue.ShowThreadPage$1 -> com.pediy.bbs.kanxue.ar:
     com.pediy.bbs.kanxue.ShowThreadPage this$0 -> a
     android.graphics.drawable.Drawable getDrawable(java.lang.String) -> getDrawable
-com.pediy.bbs.kanxue.ShowThreadPage$2 -> com.pediy.bbs.kanxue.ak:
+com.pediy.bbs.kanxue.ShowThreadPage$2 -> com.pediy.bbs.kanxue.as:
     com.pediy.bbs.kanxue.ShowThreadPage this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.pediy.bbs.kanxue.ShowThreadPage$3 -> com.pediy.bbs.kanxue.al:
+com.pediy.bbs.kanxue.ShowThreadPage$3 -> com.pediy.bbs.kanxue.at:
     com.pediy.bbs.kanxue.ShowThreadPage this$0 -> a
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.ShowThreadPage access$0(com.pediy.bbs.kanxue.ShowThreadPage$3) -> a
-com.pediy.bbs.kanxue.ShowThreadPage$3$1 -> com.pediy.bbs.kanxue.am:
+com.pediy.bbs.kanxue.ShowThreadPage$3$1 -> com.pediy.bbs.kanxue.au:
     com.pediy.bbs.kanxue.ShowThreadPage$3 this$1 -> a
     void run() -> run
-com.pediy.bbs.kanxue.ShowThreadPage$4 -> com.pediy.bbs.kanxue.an:
+com.pediy.bbs.kanxue.ShowThreadPage$4 -> com.pediy.bbs.kanxue.av:
     com.pediy.bbs.kanxue.ShowThreadPage this$0 -> a
     android.widget.EditText val$replyTextView -> b
     void execute(int,java.lang.String,java.util.List) -> a
     com.pediy.bbs.kanxue.ShowThreadPage access$0(com.pediy.bbs.kanxue.ShowThreadPage$4) -> a
-com.pediy.bbs.kanxue.ShowThreadPage$4$1 -> com.pediy.bbs.kanxue.ao:
+com.pediy.bbs.kanxue.ShowThreadPage$4$1 -> com.pediy.bbs.kanxue.aw:
     com.pediy.bbs.kanxue.ShowThreadPage$4 this$1 -> a
     java.lang.String val$response -> b
     android.widget.EditText val$replyTextView -> c
     void run() -> run
-com.pediy.bbs.kanxue.ShowThreadPage$5 -> com.pediy.bbs.kanxue.ap:
+com.pediy.bbs.kanxue.ShowThreadPage$5 -> com.pediy.bbs.kanxue.ax:
     com.pediy.bbs.kanxue.ShowThreadPage this$0 -> a
     com.alibaba.fastjson.JSONObject val$item -> b
-    android.widget.TextView val$msg -> c
+    com.pediy.bbs.kanxue.CustomTextView val$msg -> c
     com.pediy.bbs.kanxue.widget.ThreadItemFooter val$itemFooter -> d
     void execute(int,java.lang.String,java.util.List) -> a
-com.pediy.bbs.kanxue.ShowThreadPage$5$1 -> com.pediy.bbs.kanxue.aq:
+com.pediy.bbs.kanxue.ShowThreadPage$5$1 -> com.pediy.bbs.kanxue.ay:
     com.pediy.bbs.kanxue.ShowThreadPage$5 this$1 -> a
-    android.widget.TextView val$msg -> b
-    android.text.Spanned val$spanned -> c
+    com.pediy.bbs.kanxue.CustomTextView val$msg -> b
+    android.text.Spannable val$spanned -> c
     com.pediy.bbs.kanxue.widget.ThreadItemFooter val$itemFooter -> d
     void run() -> run
-com.pediy.bbs.kanxue.ShowThreadPage$5$2 -> com.pediy.bbs.kanxue.ar:
+com.pediy.bbs.kanxue.ShowThreadPage$5$2 -> com.pediy.bbs.kanxue.az:
     com.pediy.bbs.kanxue.ShowThreadPage$5 this$1 -> a
     com.pediy.bbs.kanxue.widget.ThreadItemFooter val$itemFooter -> b
     void run() -> run
-com.pediy.bbs.kanxue.ShowThreadPage$6 -> com.pediy.bbs.kanxue.as:
+com.pediy.bbs.kanxue.ShowThreadPage$6 -> com.pediy.bbs.kanxue.ba:
     com.pediy.bbs.kanxue.ShowThreadPage this$0 -> a
     int val$page -> b
     void execute(int,java.lang.String,java.util.List) -> a
-com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter -> com.pediy.bbs.kanxue.at:
+com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter -> com.pediy.bbs.kanxue.bb:
     com.pediy.bbs.kanxue.ShowThreadPage this$0 -> a
     int getCount() -> getCount
     java.lang.Object getItem(int) -> getItem
     long getItemId(int) -> getItemId
     android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
     com.pediy.bbs.kanxue.ShowThreadPage access$0(com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter) -> a
-com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$1 -> com.pediy.bbs.kanxue.au:
+com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$1 -> com.pediy.bbs.kanxue.bc:
     com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter this$1 -> a
     com.alibaba.fastjson.JSONObject val$item -> b
-    android.widget.TextView val$msg -> c
+    void onClick(android.view.View) -> onClick
+com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$2 -> com.pediy.bbs.kanxue.bd:
+    com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter this$1 -> a
+    com.alibaba.fastjson.JSONObject val$item -> b
+    com.pediy.bbs.kanxue.CustomTextView val$msg -> c
     void run() -> run
-com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$1$1 -> com.pediy.bbs.kanxue.av:
-    com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$1 this$2 -> a
-    android.widget.TextView val$msg -> b
-    android.text.Spanned val$spanned -> c
+com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$2$1 -> com.pediy.bbs.kanxue.be:
+    com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$2 this$2 -> a
+    com.pediy.bbs.kanxue.CustomTextView val$msg -> b
+    android.text.Spannable val$spanned -> c
     void run() -> run
+com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$3 -> com.pediy.bbs.kanxue.bf:
+    com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter$4 -> com.pediy.bbs.kanxue.bg:
+    com.pediy.bbs.kanxue.ShowThreadPage$ShowthreadAdapter this$1 -> a
+    void onClick(android.view.View) -> onClick
 com.pediy.bbs.kanxue.SplashActivity -> com.pediy.bbs.kanxue.SplashActivity:
     void onCreate(android.os.Bundle) -> onCreate
     void gotoMainPage() -> a
     void access$0(com.pediy.bbs.kanxue.SplashActivity) -> a
-com.pediy.bbs.kanxue.SplashActivity$1 -> com.pediy.bbs.kanxue.aw:
+com.pediy.bbs.kanxue.SplashActivity$1 -> com.pediy.bbs.kanxue.bh:
     com.pediy.bbs.kanxue.SplashActivity this$0 -> a
     void run() -> run
+com.pediy.bbs.kanxue.UserInfoPage -> com.pediy.bbs.kanxue.UserInfoPage:
+    android.widget.TextView m_UserNameContentView -> a
+    android.widget.TextView m_IDView -> b
+    android.widget.TextView m_IDContentView -> c
+    android.widget.TextView m_UserTitleView -> d
+    android.widget.TextView m_UserTitleContentView -> e
+    android.widget.TextView m_PostsView -> f
+    android.widget.TextView m_PostsContentView -> g
+    android.widget.TextView m_moneyView -> h
+    android.widget.TextView m_MoneyContentView -> i
+    android.widget.TextView m_GoodnessView -> j
+    android.widget.TextView m_GoodnessContentView -> k
+    java.lang.String m_UserNameContent -> l
+    java.lang.String m_UserTitleContent -> m
+    int m_PostsContent -> n
+    int m_MoneyContent -> o
+    int m_GoodnessContent -> p
+    java.lang.Integer m_IDContent -> q
+    com.alibaba.fastjson.JSONArray m_person -> r
+    int m_id -> s
+    android.os.Handler m_handler -> t
+    void onCreate(android.os.Bundle) -> onCreate
+    void onLoginState() -> a
+    void onBackBtnClick(android.view.View) -> onBackBtnClick
+    com.alibaba.fastjson.JSONArray access$0(com.pediy.bbs.kanxue.UserInfoPage) -> a
+    void access$1(com.pediy.bbs.kanxue.UserInfoPage,java.lang.String) -> a
+    void access$2(com.pediy.bbs.kanxue.UserInfoPage,java.lang.String) -> b
+    void access$3(com.pediy.bbs.kanxue.UserInfoPage,java.lang.Integer) -> a
+    void access$4(com.pediy.bbs.kanxue.UserInfoPage,int) -> a
+    void access$5(com.pediy.bbs.kanxue.UserInfoPage,int) -> b
+    void access$6(com.pediy.bbs.kanxue.UserInfoPage,int) -> c
+    android.widget.TextView access$7(com.pediy.bbs.kanxue.UserInfoPage) -> b
+    java.lang.String access$8(com.pediy.bbs.kanxue.UserInfoPage) -> c
+    android.widget.TextView access$9(com.pediy.bbs.kanxue.UserInfoPage) -> d
+    java.lang.String access$10(com.pediy.bbs.kanxue.UserInfoPage) -> e
+    android.widget.TextView access$11(com.pediy.bbs.kanxue.UserInfoPage) -> f
+    java.lang.Integer access$12(com.pediy.bbs.kanxue.UserInfoPage) -> g
+    android.widget.TextView access$13(com.pediy.bbs.kanxue.UserInfoPage) -> h
+    int access$14(com.pediy.bbs.kanxue.UserInfoPage) -> i
+    android.widget.TextView access$15(com.pediy.bbs.kanxue.UserInfoPage) -> j
+    int access$16(com.pediy.bbs.kanxue.UserInfoPage) -> k
+    android.widget.TextView access$17(com.pediy.bbs.kanxue.UserInfoPage) -> l
+    int access$18(com.pediy.bbs.kanxue.UserInfoPage) -> m
+    void access$19(com.pediy.bbs.kanxue.UserInfoPage,com.alibaba.fastjson.JSONArray) -> a
+    android.os.Handler access$20(com.pediy.bbs.kanxue.UserInfoPage) -> n
+com.pediy.bbs.kanxue.UserInfoPage$1 -> com.pediy.bbs.kanxue.bi:
+    com.pediy.bbs.kanxue.UserInfoPage this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.pediy.bbs.kanxue.UserInfoPage$2 -> com.pediy.bbs.kanxue.bj:
+    com.pediy.bbs.kanxue.UserInfoPage this$0 -> a
+    void execute(int,java.lang.String,java.util.List) -> a
 com.pediy.bbs.kanxue.net.Api -> com.pediy.bbs.kanxue.a.a:
     com.pediy.bbs.kanxue.net.Api mInstance -> a
     java.lang.String mToken -> b
@@ -1361,6 +1505,7 @@ com.pediy.bbs.kanxue.net.Api -> com.pediy.bbs.kanxue.a.a:
     java.lang.String getUserHeadImageUrl(int) -> a
     java.lang.String getAttachmentImgUrl(int) -> b
     java.lang.String strToEnt(java.lang.String) -> b
+    void getUserInfoPage(int,com.pediy.bbs.kanxue.net.HttpClientUtil$NetClientCallback) -> b
     void access$0(com.pediy.bbs.kanxue.net.Api,java.lang.String) -> a
 com.pediy.bbs.kanxue.net.Api$1 -> com.pediy.bbs.kanxue.a.b:
     com.pediy.bbs.kanxue.net.Api this$0 -> a
@@ -1437,6 +1582,19 @@ com.pediy.bbs.kanxue.widget.AmazingListView -> com.pediy.bbs.kanxue.widget.Amazi
     void setAdapter(android.widget.ListAdapter) -> setAdapter
     com.pediy.bbs.kanxue.widget.AmazingAdapter getAdapter() -> getAdapter
     android.widget.ListAdapter getAdapter() -> getAdapter
+com.pediy.bbs.kanxue.widget.DragImageView -> com.pediy.bbs.kanxue.widget.DragImageView:
+    android.graphics.PointF startPnt -> a
+    android.graphics.PointF endPnt -> b
+    android.graphics.PointF midPnt -> c
+    android.graphics.PointF curPnt -> d
+    boolean[] bValid -> e
+    int mode -> f
+    float oldDist -> g
+    android.graphics.Matrix matrix -> h
+    android.graphics.Matrix savedMatrix -> i
+    float Spacing(android.graphics.PointF,android.graphics.PointF) -> a
+    void MidPoint(android.graphics.PointF,android.graphics.PointF,android.graphics.PointF) -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
 com.pediy.bbs.kanxue.widget.ImageViewWithCache -> com.pediy.bbs.kanxue.widget.ImageViewWithCache:
     java.util.concurrent.ExecutorService s_threadPool -> a
     java.util.HashMap s_updateQueue -> b

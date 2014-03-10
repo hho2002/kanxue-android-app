@@ -38,7 +38,6 @@ com.alibaba.fastjson.JSON:
     251:262:public static final varargs java.lang.Object parseObject(byte[],int,int,java.nio.charset.CharsetDecoder,java.lang.reflect.Type,com.alibaba.fastjson.parser.Feature[])
     267:283:public static final varargs java.lang.Object parseObject(char[],int,java.lang.reflect.Type,com.alibaba.fastjson.parser.Feature[])
     287:287:public static final java.lang.Object parseObject(java.lang.String,java.lang.Class)
-    291:314:public static final com.alibaba.fastjson.JSONArray parseArray(java.lang.String)
     318:338:public static final java.util.List parseArray(java.lang.String,java.lang.Class)
     342:360:public static final java.util.List parseArray(java.lang.String,java.lang.reflect.Type[])
     390:408:public static final varargs java.lang.String toJSONStringWithDateFormat(java.lang.Object,java.lang.String,com.alibaba.fastjson.serializer.SerializerFeature[])
@@ -121,7 +120,6 @@ com.alibaba.fastjson.parser.DefaultJSONParser:
     129:131:public void setDateFormat(java.lang.String)
     134:135:public void setDateFomrat(java.text.DateFormat)
     138:139:public DefaultJSONParser(java.lang.String)
-    142:143:public DefaultJSONParser(java.lang.String,com.alibaba.fastjson.parser.ParserConfig)
     150:151:public DefaultJSONParser(char[],int,com.alibaba.fastjson.parser.ParserConfig,int)
     167:170:public java.lang.String getInput()
     444:445:public void setConfig(com.alibaba.fastjson.parser.ParserConfig)
@@ -282,13 +280,25 @@ com.alibaba.fastjson.util.TypeUtils:
     53:53:public TypeUtils()
     393:400:public static final byte[] castToBytes(java.lang.Object)
     438:438:public static final java.lang.Object castToJavaBean(java.lang.Object,java.lang.Class)
+com.pediy.bbs.kanxue.AnimatedTabHostListener:
+    private static final int ANIMATION_TIME
+    private static final int BRIGHTNESS_DIM
+    private static final int BRIGHTNESS_ON
+    private static final int MINIMUM_BACKLIGHT
+    private static final int MAXIMUM_BACKLIGHT
 com.pediy.bbs.kanxue.App:
     public static final java.lang.String LOGIN_STATE_CHANGE_ACTION
+    140:141:public void checkUpdate(android.content.Context)
 com.pediy.bbs.kanxue.BuildConfig
+com.pediy.bbs.kanxue.CustomTextView$LocalLinkMovementMethod:
+    1:1:public static bridge synthetic android.text.method.MovementMethod getInstance()
+com.pediy.bbs.kanxue.NightModeManager:
+    36:36:public static com.pediy.bbs.kanxue.NightModeManager getInstance()
 com.pediy.bbs.kanxue.R
 com.pediy.bbs.kanxue.R$array
 com.pediy.bbs.kanxue.R$attr
 com.pediy.bbs.kanxue.R$color
+com.pediy.bbs.kanxue.R$dimen
 com.pediy.bbs.kanxue.R$drawable
 com.pediy.bbs.kanxue.R$id
 com.pediy.bbs.kanxue.R$layout
@@ -310,6 +320,7 @@ com.pediy.bbs.kanxue.net.Api:
     public static final int POST_CONTENT_SIZE_MIN
     public static final int NEW_FORUM_ID
     public static final int LIFE_FORUM_ID
+    public static final int SECURITY_FORUM_ID
     public static final int GLOBAL_TOP_FORUM
     public static final int AREA_TOP_FORUM
     public static final int TOP_FORUM
@@ -342,6 +353,10 @@ com.pediy.bbs.kanxue.widget.AmazingListView:
     161:165:public void noMorePages()
     169:173:public void mayHaveMorePages()
     176:176:public boolean isLoadingViewVisible()
+com.pediy.bbs.kanxue.widget.DragImageView:
+    private static final int TOUCH_NONE
+    private static final int TOUCH_MULTI_POINT
+    private static final int TOUCH_SINGLE_POINT
 com.pediy.bbs.kanxue.widget.XListView:
     private static final int SCROLLBACK_HEADER
     private static final int SCROLLBACK_FOOTER
