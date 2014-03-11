@@ -98,7 +98,7 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 				ImageViewWithCache.cacheBitmapFromUrl(url, bitmap);
 			}
 			bitmap.setDensity(ImageViewWithCache.getDensityDpi(ShowThreadPage.this));
-			Drawable drawable = new BitmapDrawable(bitmap);
+			Drawable drawable = new BitmapDrawable(getResources(), bitmap);
 			drawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
 			return drawable;
         }  
