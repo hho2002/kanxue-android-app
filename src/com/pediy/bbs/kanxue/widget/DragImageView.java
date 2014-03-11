@@ -24,7 +24,7 @@ public class DragImageView extends ImageView {
 	private float   oldDist = 0;
 
 	private  Matrix matrix =    new Matrix();
-	private  Matrix savedMatrix = new Matrix();
+	//private  Matrix savedMatrix = new Matrix();
 
 	public DragImageView(Context context) {
 		super(context);

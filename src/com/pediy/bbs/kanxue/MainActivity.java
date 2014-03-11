@@ -1,8 +1,8 @@
 package com.pediy.bbs.kanxue;
 
-import android.app.AlertDialog;
+//import android.app.AlertDialog;
 import android.app.TabActivity;
-import android.app.AlertDialog.Builder;
+//import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;

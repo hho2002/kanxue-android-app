@@ -12,7 +12,7 @@ import com.pediy.bbs.kanxue.net.HttpClientUtil;
 import com.pediy.bbs.kanxue.net.HttpClientUtil.NetClientCallback;
 
 import android.app.Activity;
-import android.content.Intent;
+//import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
