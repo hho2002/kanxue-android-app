@@ -7,6 +7,7 @@ public class CookieStorage {
 	private ObjStorage m_objStorage = null;
 	private HashMap<String, String> m_cookies = null;
 	
+	@SuppressWarnings("unchecked")
 	public CookieStorage(ObjStorage objStorage) {
 		this.m_objStorage = objStorage;
 		Object obj = m_objStorage.load("cookie");
