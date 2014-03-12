@@ -16,24 +16,27 @@ import com.pediy.bbs.kanxue.net.Api;
 
 public class MainActivity extends TabActivity {
 	private long m_exitTime = 0;
-	private String[] m_tabTitle = new String[] { "新贴", "主页", "安全资讯", "设置","夜间模式" };
 
-	private Class<?>[] m_tabIntent = new Class<?>[] { ForumDisplayPage.class,
-			ForumHomePage.class, ForumDisplayPage.class, SettingPage.class ,ForumHomePage.class};
+	private String[] m_tabTitle = new String[] { "主页", "新贴", "安全资讯", "设置","夜间模式" };
 
-	private int[] m_tabIcon = new int[] { R.drawable.collections_view_as_list,
-			R.drawable.collections_view_as_grid, R.drawable.coffee,
-			R.drawable.action_settings,R.drawable.btn_night_mode };
+	private Class<?>[] m_tabIntent = new Class<?>[] { ForumHomePage.class,
+			ForumDisplayPage.class, ForumDisplayPage.class, SettingPage.class, ForumHomePage.class};
+
+	private int[] m_tabIcon = new int[] { R.drawable.collections_view_as_grid,
+			R.drawable.collections_view_as_list, R.drawable.coffee,
+			R.drawable.action_settings, R.drawable.btn_night_mode };
 
 	private Bundle[] m_data = new Bundle[] {
-			createBundle(Api.NEW_FORUM_ID, "新贴", true), null,
+			null, createBundle(Api.NEW_FORUM_ID, "新贴", true),
 			createBundle(Api.SECURITY_FORUM_ID, "安全资讯", true), null ,null};
 
 	private TabHost tabHost;  //Tviker add
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.main);
+
 		tabHost = getTabHost();
 		for (int i = 0; i < this.m_tabTitle.length; i++) {
 			String title = this.m_tabTitle[i];
@@ -44,8 +47,7 @@ public class MainActivity extends TabActivity {
 			View tab = getLayoutInflater().inflate(R.layout.forum_tab, null);
 			ImageView imgView = (ImageView) tab.findViewById(R.id.tabIcon);
 			imgView.setImageResource(m_tabIcon[i]);
-			TabSpec spec = tabHost.newTabSpec(title).setIndicator(tab)
-					.setContent(intent);
+			TabSpec spec = tabHost.newTabSpec(title).setIndicator(tab).setContent(intent);
 			tabHost.addTab(spec);
 		}
 		
@@ -54,7 +56,6 @@ public class MainActivity extends TabActivity {
 		//app.checkUpdate(this);
 		
 		tabHost.setOnTabChangedListener(new AnimatedTabHostListener(tabHost,this,this));
-		
 	}
 
 	// 按两下返回键退出，在tabActivity中不好用
