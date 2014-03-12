@@ -37,32 +37,39 @@ public class CustomTextView extends TextView {
 	public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
-	
+
 	public static String addAToString(String context)
     {
-        //为<img/>加<a src=".."></a>
+		//为<img/>加<a src=".."></a>
 		String src="";
-        Pattern pimg = Pattern.compile("(\\<img)(.*?)(\\>)");
-        Pattern psrc = Pattern.compile("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)");
-        Matcher mimg=pimg.matcher(context);
-        while(mimg.find()){
-        	Matcher msrc = psrc.matcher(mimg.group());
-        	 while(msrc.find()){
-        		 src = msrc.group();
-        		 int start = src.indexOf("src=\"");
-     			 int end = src.indexOf("\"",start+5);
-     			context=context.replace(mimg.group(), "<a href='"+src.substring(start+5, end)+"'>"+mimg.group()+"</a>");
-             }
-            
-        }        
-        return context;
+		Pattern pimg = Pattern.compile("(\\<img)(.*?)(\\>)");
+		Pattern psrc = Pattern.compile("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)");
+		Matcher mimg=pimg.matcher(context);
+		while (mimg.find()) {
+			Matcher msrc = psrc.matcher(mimg.group());
+			while (msrc.find()) {
+				src = msrc.group();
+				int start = src.indexOf("src=\"");
+				int end = src.indexOf("\"", start + 5);
+				//Log.v("imgsrc", src);
+				//Log.v("imgsrc_length", Integer.toString(src.length()));
+				//Log.v("imgsrc_start", Integer.toString(start));
+				//Log.v("imgsrc_end", Integer.toString(end));
+				if (end != -1) {
+					context = context.replace(mimg.group(),
+						"<a href='" + src.substring(start + 5, end) + "'>" + mimg.group() + "</a>");
+				}
+			}
+		}
+		return context;
     }
+
 	public static void ThumbnailAttachmentsClick(String mUrl, View widget) {
 		Bundle data = new Bundle();
 		data.putString("url", mUrl);
 		Intent intent = new Intent(widget.getContext(), ImageActivity.class);
 		intent.putExtras(data);
-		widget.getContext().startActivity(intent); 
+		widget.getContext().startActivity(intent);
 	}
 
 	@Override
@@ -131,11 +138,11 @@ public class CustomTextView extends TextView {
 			return Touch.onTouchEvent(widget, buffer, event);
 		}
 	}
-	
+
 	public static void LinkClick(String urlstr, TextView widget)
 	{
-		if(urlstr.contains("attachmentid") && 
-		   urlstr.contains("thumb") && 
+		if(urlstr.contains("attachmentid") &&
+		   urlstr.contains("thumb") &&
 		   urlstr.contains("bbs.pediy.com"))
 		{
 			CustomTextView.ThumbnailAttachmentsClick(urlstr, widget);
@@ -154,6 +161,6 @@ public class CustomTextView extends TextView {
 		        context.startActivity(intent);
 			Log.v("thing", "=============你点击的是超链接=============");
 		}
-		
+
 	}
 }
