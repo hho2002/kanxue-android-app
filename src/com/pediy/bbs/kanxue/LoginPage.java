@@ -117,6 +117,15 @@ public class LoginPage extends Activity {
 						return;
 					}
 					String token = retObj.getString("securitytoken");
+					if (token == null || token.isEmpty()) {
+						m_handler.post(new Runnable() {
+							@Override
+							public void run() {
+								Toast.makeText(LoginPage.this, "登录失败，securitytoken为空", Toast.LENGTH_SHORT).show();
+							}
+						});
+						return;
+					}
 					Api.getInstance().setToken(token);
 					Api.getInstance().setLoginUserInfo(
 							retObj.getString("username"),

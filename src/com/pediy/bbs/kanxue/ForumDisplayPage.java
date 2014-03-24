@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONException;
 import com.pediy.bbs.kanxue.net.Api;
 import com.pediy.bbs.kanxue.net.HttpClientUtil;
 import com.pediy.bbs.kanxue.net.HttpClientUtil.NetClientCallback;
@@ -150,7 +151,19 @@ public class ForumDisplayPage extends Activity implements IXListViewListener,
 					public void execute(int status, String response,
 							List<Cookie> cookies) {
 						if (status == HttpClientUtil.NET_SUCCESS) {
-							JSONObject obj = JSON.parseObject(response);
+							JSONObject obj;
+							try{
+								obj = JSON.parseObject(response);
+							} catch (JSONException e) {
+								m_handler.post(new Runnable() {
+									@Override
+									public void run() {
+										Toast.makeText(ForumDisplayPage.this, "JSON数据错误", Toast.LENGTH_SHORT).show();
+									}
+								});
+								return;
+							}
+
 							JSONArray arr = obj.getJSONArray("threadList");
 							if (page == 1) {
 								m_lastUpdateTime = obj.getLong("time");

@@ -11,16 +11,19 @@ import android.preference.PreferenceManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONException;
 import com.pediy.bbs.kanxue.net.HttpClientUtil.NetClientCallback;
 import com.pediy.bbs.kanxue.util.CookieStorage;
 import com.pediy.bbs.kanxue.util.ObjStorage;
 import com.pediy.bbs.kanxue.util.SimpleHASH;
 
+import android.util.Log;
+
 /**
  * 看雪看全论坛开放api类
- * 
+ *
  * @author fanhexin
- * 
+ *
  */
 public class Api {
 	public static final String DOMAIN = "http://bbs.pediy.com";
@@ -59,6 +62,7 @@ public class Api {
 
 	private static Api mInstance = null;
 	private String mToken = "guest";
+
 	// TODO 使访问cookie时变得线程安全
 	private CookieStorage mCookieStorage = null;
 	private SharedPreferences mPreferences = null;
@@ -72,7 +76,7 @@ public class Api {
 
 	/**
 	 * 设置context，初始化上下文相关的属性
-	 * 
+	 *
 	 * @param con
 	 *            要设置的 context
 	 */
@@ -108,8 +112,15 @@ public class Api {
 						if (status != HttpClientUtil.NET_SUCCESS)
 							return;
 
-						JSONObject obj = JSON.parseObject(response);
+						JSONObject obj;
+						try {
+							obj = JSON.parseObject(response);
+						} catch (JSONException e) {
+							//Log.v("JSON", response);
+							return;
+						}
 						mToken = obj.getString("securitytoken");
+						Log.v("getForumToken", mToken);
 					}
 
 				});
@@ -121,11 +132,11 @@ public class Api {
 
 	/**
 	 * securitytoken的setter接口
-	 * 
+	 *
 	 * @param token
 	 */
 	public void setToken(String token) {
-		if (token == null)
+		if (token == null || token.isEmpty())
 			return;
 		this.mToken = token;
 	}
@@ -134,12 +145,13 @@ public class Api {
 	 * @return 处于登录状态返回true，反之返回false
 	 */
 	public boolean isLogin() {
+		//Log.v("isLogin", mToken);
 		return this.mCookieStorage.hasCookie("bbsessionhash");
 	}
 
 	/**
 	 * 获取看雪的版块列表
-	 * 
+	 *
 	 * @param callback
 	 */
 	public void getForumHomePage(final NetClientCallback callback) {
@@ -147,6 +159,7 @@ public class Api {
 		HttpClientUtil hcu = new HttpClientUtil(url, HttpClientUtil.METHOD_GET,
 				callback);
 		if (this.isLogin()) {
+			//Log.v("getForumHomePage", mToken);
 			hcu.addCookie(this.mCookieStorage.getCookies());
 		}
 		hcu.asyncConnect();
@@ -154,7 +167,7 @@ public class Api {
 
 	/**
 	 * 获取指定版块的主题列表
-	 * 
+	 *
 	 * @param id
 	 *            版块id
 	 * @param page
@@ -168,6 +181,7 @@ public class Api {
 		HttpClientUtil hcu = new HttpClientUtil(url, HttpClientUtil.METHOD_GET,
 				callback);
 		if (this.isLogin()) {
+			//Log.v("getForumDisplayPage", mToken);
 			hcu.addCookie(this.mCookieStorage.getCookies());
 		}
 		hcu.asyncConnect();
@@ -175,7 +189,7 @@ public class Api {
 
 	/**
 	 * 获取指定主题中的帖子列表
-	 * 
+	 *
 	 * @param id
 	 *            主题id
 	 * @param page
@@ -189,6 +203,7 @@ public class Api {
 		HttpClientUtil hcu = new HttpClientUtil(url, HttpClientUtil.METHOD_GET,
 				callback);
 		if (this.isLogin()) {
+			//Log.v("getForumShowthreadPage", mToken);
 			hcu.addCookie(this.mCookieStorage.getCookies());
 		}
 		hcu.asyncConnect();
@@ -196,7 +211,7 @@ public class Api {
 
 	/**
 	 * 获取完整的帖子内容。帖子内容较长时，看雪默认只传输缩略内容，可通过该接口获取完整内容。
-	 * 
+	 *
 	 * @param id
 	 *            帖子id
 	 * @param callback
@@ -206,6 +221,7 @@ public class Api {
 		HttpClientUtil hcu = new HttpClientUtil(url, HttpClientUtil.METHOD_GET,
 				callback);
 		if (this.isLogin()) {
+			//Log.v("getForumFullThread", mToken);
 			hcu.addCookie(this.mCookieStorage.getCookies());
 		}
 		hcu.asyncConnect();
@@ -213,7 +229,7 @@ public class Api {
 
 	/**
 	 * 登录看雪
-	 * 
+	 *
 	 * @param uname
 	 * @param passwd
 	 * @param callback
@@ -235,7 +251,7 @@ public class Api {
 
 	/**
 	 * 设置登录用户的个人信息
-	 * 
+	 *
 	 * @param username
 	 *            登录用户用户名
 	 * @param id
@@ -299,7 +315,7 @@ public class Api {
 
 	/**
 	 * 登出
-	 * 
+	 *
 	 * @param callback
 	 */
 	public void logout(final NetClientCallback callback) {
@@ -311,7 +327,7 @@ public class Api {
 
 	/**
 	 * 回复主题
-	 * 
+	 *
 	 * @param id
 	 *            主题id
 	 * @param msg
@@ -333,7 +349,7 @@ public class Api {
 
 	/**
 	 * 发布新主题
-	 * 
+	 *
 	 * @param id
 	 *            版块id
 	 * @param subject
@@ -349,7 +365,7 @@ public class Api {
 
 	/**
 	 * 发布带有悬赏kx币的新主题
-	 * 
+	 *
 	 * @param id
 	 * @param subject
 	 * @param kxReward
@@ -381,7 +397,7 @@ public class Api {
 
 	/**
 	 * 看雪的意见反馈接口
-	 * 
+	 *
 	 * @param name
 	 * @param email
 	 * @param msg
@@ -404,7 +420,7 @@ public class Api {
 
 	/**
 	 * 检测新版本
-	 * 
+	 *
 	 * @param callback
 	 */
 	public void checkUpdate(NetClientCallback callback) {
@@ -415,7 +431,7 @@ public class Api {
 
 	/**
 	 * 检测指定版块下的主题列表是否有更新
-	 * 
+	 *
 	 * @param id
 	 *            版块id
 	 * @param time
@@ -436,7 +452,7 @@ public class Api {
 
 	/**
 	 * 检测指定主题下的帖子列表是否有更新
-	 * 
+	 *
 	 * @param id
 	 *            主题id
 	 * @param time
@@ -457,7 +473,7 @@ public class Api {
 
 	/**
 	 * 获取看雪用户头像的url
-	 * 
+	 *
 	 * @param userId
 	 *            用户id
 	 * @return
@@ -468,7 +484,7 @@ public class Api {
 
 	/**
 	 * 获取看雪帖子中附件图片的url
-	 * 
+	 *
 	 * @param id
 	 *            附件id
 	 * @return
@@ -480,7 +496,7 @@ public class Api {
 
 	/**
 	 * 登录前用户密码预处理
-	 * 
+	 *
 	 * @param input
 	 *            去掉首位空格的用户密码
 	 * @return
@@ -515,7 +531,7 @@ public class Api {
 
 	/**
 	 * 检测指定用户个人信息列表
-	 * 
+	 *
 	 * @param id
 	 *            用户id
 	 * @param callback

@@ -31,6 +31,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONException;
 import com.pediy.bbs.kanxue.net.Api;
 import com.pediy.bbs.kanxue.net.HttpClientUtil;
 import com.pediy.bbs.kanxue.net.HttpClientUtil.NetClientCallback;
@@ -140,7 +141,18 @@ public class ForumHomePage extends Activity implements OnItemClickListener {
 	}
 
 	private void parseResponse(String response) {
-		JSONObject retObj = JSON.parseObject(response);
+		JSONObject retObj;
+		try {
+			retObj = JSON.parseObject(response);
+		} catch (JSONException e) {
+			m_handler.post(new Runnable() {
+				@Override
+				public void run() {
+					Toast.makeText(ForumHomePage.this, "JSON数据错误", Toast.LENGTH_SHORT).show();
+				}
+			});
+			return;
+		}
 
 		JSONArray ret = retObj.getJSONArray("forumbits");
 		int positionForSection = 0;

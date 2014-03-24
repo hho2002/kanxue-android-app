@@ -35,7 +35,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.text.Html;
 import android.text.Html.ImageGetter;
@@ -417,17 +416,19 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 			public void execute(int status, String response, List<Cookie> cookies) {
 				if (status == HttpClientUtil.NET_SUCCESS) {
 					JSONObject jsonObj;
-					JSONArray jsonArr;
 					try {
 						jsonObj = JSON.parseObject(response);
-						jsonArr = jsonObj.getJSONArray("postbits");
 					} catch (JSONException e) {
 						//Log.v("JSON", response);
-						Looper.prepare();
-						Toast.makeText(ShowThreadPage.this, "JSON数据错误", Toast.LENGTH_SHORT).show();
-						Looper.loop();
+						m_handler.post(new Runnable() {
+							@Override
+							public void run() {
+								Toast.makeText(ShowThreadPage.this, "JSON数据错误", Toast.LENGTH_SHORT).show();
+							}
+						});
 						return;
 					}
+					JSONArray jsonArr = jsonObj.getJSONArray("postbits");
 					if (page == 1) {
 						m_totalPage = jsonObj.getInteger("pagenav");
 						m_lastUpdateTime = jsonObj.getLong("time");
