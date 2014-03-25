@@ -166,7 +166,7 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 		m_listView.setPullLoadEnable(false);
 		m_listView.setPullRefreshEnable(true);
 		m_listView.setXListViewListener(this);
-		m_listView.setOnItemClickListener(this);
+		//m_listView.setOnItemClickListener(this);
 		View titleHeaderView = LayoutInflater.from(this).inflate(R.layout.show_thread_title_header, null);
 		m_listView.addHeaderView(titleHeaderView);
 		m_titleView = (TextView)titleHeaderView.findViewById(R.id.showThreadTitle);
@@ -342,6 +342,8 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+		//Log.v("onItemClick position", Integer.toString(position));
+		//Log.v("onItemClick id", Long.toString(id));
 		//对header进行点击也会触发该事件
 		if (position < 2)
 			return;
@@ -482,7 +484,7 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 			TextView posttime = (TextView)convertView.findViewById(R.id.showthreadPosttime);
 			final CustomTextView msg = (CustomTextView)convertView.findViewById(R.id.showthreadMsg);
 			ImageViewWithCache img = (ImageViewWithCache)convertView.findViewById(R.id.showthreadHeadImg);
-			ThreadItemFooter itemFooter = (ThreadItemFooter)convertView.findViewById(R.id.showthreadLoadTip);
+			final ThreadItemFooter itemFooter = (ThreadItemFooter)convertView.findViewById(R.id.showthreadLoadTip);
 
 			final JSONObject item = m_model.getJSONObject(position);
 			username.setText(Html.fromHtml(item.get("username").toString()));
@@ -555,6 +557,72 @@ public class ShowThreadPage extends Activity implements IXListViewListener, OnIt
 				}
 				itemFooter.setCollapsed();
 			}
+			itemFooter.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Log.v("itemFooter", "click");
+					Log.v("position", Integer.toString(position));
+
+					if (item.getInteger("thumbnail") != 1)
+						return;
+
+					if (itemFooter.isLoading()) {
+						return;
+					}
+
+					final int postId = Integer.parseInt(item.get("postid").toString());
+					NetClientCallback ncc = new NetClientCallback() {
+						@Override
+						public void execute(int status,
+								String response, List<Cookie> cookies) {
+							if (status == HttpClientUtil.NET_SUCCESS) {
+								response = CustomTextView.addAToString(response);
+								final Spannable spanned = (Spannable)Html.fromHtml(response, m_imgGetter, null);
+								item.put("isExpanded", 1);
+								item.put("expandSpanned", spanned);
+								m_handler.post(new Runnable(){
+
+									@Override
+									public void run() {
+										msg.setText(spanned);
+										msg.setMovementMethod(LocalLinkMovementMethod.getInstance());
+										msg.setFocusable(false);
+										itemFooter.setLoadFinish();
+										itemFooter.setExpanded();
+									}
+
+								});
+								return;
+							}
+							m_handler.post(new Runnable() {
+
+								@Override
+								public void run() {
+									itemFooter.setLoadFinish();
+								}
+
+							});
+							m_handler.sendEmptyMessage(status);
+						}
+					};
+
+					if (item.containsKey("isExpanded") && item.getInteger("isExpanded") == 1) {
+						item.put("isExpanded", 0);
+						msg.setText((Spannable)item.get("thumbnailSpanned"));
+						itemFooter.setCollapsed();
+						m_listView.setSelection(position);
+					} else {
+						if (item.containsKey("expandSpanned")) {
+							item.put("isExpanded", 1);
+							msg.setText((Spannable)item.get("expandSpanned"));
+							itemFooter.setExpanded();
+						} else {
+							itemFooter.setLoading();
+							Api.getInstance().getForumFullThread(postId, ncc);
+						}
+					}
+				}
+			});
 
 			//图片中带附件处理
 			View attachmentView = convertView.findViewById(R.id.showthreadAttachment);
