@@ -40,8 +40,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:clickable="true"
-                android:onClick="onPageTitleClick"
                 android:text="意见反馈"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
